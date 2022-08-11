@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react"
+import { useRouter } from "next/router"
+import io from "socket.io-client"
+
+const socket = io("http://localhost:5000")
 
 export default function RoomsUid() {
-  const score_list = [1, 2, 3, 5, 8, 13, 21, 44]
-  const [name, setName] = useState()
+  const router = useRouter()
+  const { uid } = router.query
+  const [name, setName] = useState("")
+  const [list, setList] = useState([])
 
   const keyPress = (e) => {
     if(e.key == "Enter") {
@@ -17,13 +23,18 @@ export default function RoomsUid() {
   }
 
   const sendScore = (e) => {
-    console.log(e.target.value)
+    const data = { roomUid: uid, userName: name, value: e.target.value }
+    socket.emit("sendScore", { data: data })
   }
 
   useEffect(() => {
     const inputName = localStorage.getItem('userName')
     setName(inputName)
   }, [name])
+
+  socket.on("receivedScore", (data) => {
+    setList([...list, data])
+  })
 
   if(!name) {
     return (
@@ -43,10 +54,14 @@ export default function RoomsUid() {
         </div>
 
         <select onChange={sendScore} name="score" className="w-20 border border-gray-500">
-          { score_list.map((score) => (
+          { [1, 2, 3, 5, 8, 13, 21, 44].map((score) => (
             <option value={score} key={score}>{score}</option>
           ))}
         </select>
+
+        { list.map((e, i) => (
+          <div key={i}>{ e.data.userName }：{ e.data.value }</div>
+        )) }
       </>
     )
   }
