@@ -32,9 +32,15 @@ export default function RoomsUid() {
     setName(inputName)
   }, [name])
 
-  socket.on("receivedScore", (data) => {
-    setList([...list, data])
-  })
+  useEffect(() => {
+    socket.on("receivedScore", (data) => {
+      setList(data)
+      return () => {
+        socket.off("receivedScore")
+      }
+    })
+  }, [])
+
 
   if(!name) {
     return (
