@@ -27,6 +27,22 @@ export default function RoomsUid() {
     socket.emit("sendScore", { data: data })
   }
 
+  const joinRoom = () => {
+    const data = { roomUid: uid, userName: name, value: 0 }
+    socket.emit("sendScore", { data: data })
+  }
+
+  const myScore = () => {
+    return list.filter((e) => {
+      return e.data.roomUid === uid && e.data.userName === name
+    })
+  }
+
+  const isFirstSelect = () => {
+    const firstScore = myScore()
+    return firstScore.length === 0
+  }
+
   useEffect(() => {
     const inputName = localStorage.getItem('userName')
     setName(inputName)
@@ -50,6 +66,12 @@ export default function RoomsUid() {
           <input type="text" className="border border-gray-500" onKeyPress={(e) => keyPress(e)} />
         </div>
       </>
+    )
+  } else if (isFirstSelect()) {
+    return (
+      <button onClick={joinRoom} className="w-20 border border-gray-500">
+        Join Room
+      </button>
     )
   } else {
     return (
