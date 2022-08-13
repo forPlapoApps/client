@@ -4,7 +4,7 @@ import io from "socket.io-client"
 
 const socket = io("http://localhost:5000")
 
-export default function RoomsUid() {
+export default function RoomsHogeHogeUid() {
   const router = useRouter()
   const { uid } = router.query
   const [name, setName] = useState("")
