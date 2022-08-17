@@ -10,8 +10,10 @@ export default function Result (props) {
   const [list, setList] = useState([])
 
   useEffect(() => {
-    const data = { roomUid: uid, userName: props.name, value: 0 }
-    socket.emit("sendScore", { data: data })
+    if (uid) {
+      const data = { roomUid: uid, userName: props.name, value: 0 }
+      socket.emit("sendScore", { data: data })
+    }
   }, [uid, props.name])
 
   useEffect(() => {
@@ -23,7 +25,6 @@ export default function Result (props) {
 
   return (
     <>
-      <p>hogehoge</p>
       { list.map((e, i) => (
         <p key={i}>{ e.data.userName }：{ e.data.value }</p>
       ))}

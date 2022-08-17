@@ -21,7 +21,7 @@ export default function RoomsUid() {
           <CopyLink />
           <OpenButton />
           <Result name={name} />
-          <FibonacciNumber />
+          <FibonacciNumber name={name}  />
         </div>
         :
         <SetName setName={setName} />
