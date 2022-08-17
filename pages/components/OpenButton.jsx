@@ -1,16 +1,22 @@
 import { useState } from "react"
+import { useRouter } from "next/router"
+import { io } from "socket.io-client"
 
-export default function OpenButton () {
+const socket = io("http://localhost:5000")
+
+export default function OpenButton (props) {
   const [isInProgress, setIsInProgress] = useState(true)
+  const router = useRouter()
+  const { uid } = router.query
 
   const openAllScore = () => {
-    console.log('openButtonが押されました。')
     setIsInProgress(false)
+    socket.emit("openScoreRequest", { data: { roomUid: uid }})
   }
 
   const resetAllScore = () => {
-    console.log('resetButtonが押されました')
     setIsInProgress(true)
+    socket.emit("resetScoreRequest", { data: { roomUid: uid}})
   }
 
   return (

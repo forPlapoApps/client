@@ -8,6 +8,7 @@ export default function Result (props) {
   const router = useRouter()
   const { uid } = router.query
   const [list, setList] = useState([])
+  const [isInProgress, setIsInProgress] = useState(true)
 
   useEffect(() => {
     if (uid) {
@@ -21,12 +22,38 @@ export default function Result (props) {
       setList(data)
       return () => { socket.off("receivedScore") }
     })
+  }, [])
+
+  useEffect(() => {
+    socket.on("openAllScore", () => {
+      setIsInProgress(false)
+    })
+  }, [])
+
+
+  useEffect(() => {
+    socket.on("resetAllScore" , (data) => {
+      console.log(data)
+      setList(data)
+      setIsInProgress(true)
+    })
   })
 
   return (
     <>
       { list.map((e, i) => (
-        <p key={i}>{ e.data.userName }：{ e.data.value }</p>
+        <div key={i} className="flex">
+          { e.data.userName }：
+          { isInProgress ? 
+            e.data.value === 0 ?
+              <p>Thinking...</p>
+            :
+              <p>Selected!</p>
+          :
+            <p>{ e.data.value }</p>
+          }
+          
+        </div>
       ))}
     </>
   )
