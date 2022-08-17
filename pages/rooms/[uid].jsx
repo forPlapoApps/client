@@ -4,6 +4,7 @@ import FibonacciNumber from "../components/FibonacciNumber"
 import OpenButton from "../components/OpenButton"
 import SetName from "../components/SetName"
 import MyName from "../components/MyName"
+import Result from "../components/Result"
 
 export default function RoomsUid() {
   const [name, setName] = useState("")
@@ -19,6 +20,7 @@ export default function RoomsUid() {
           <MyName name={name} setName={setName} />
           <CopyLink />
           <OpenButton />
+          <Result name={name} />
           <FibonacciNumber />
         </div>
         :
