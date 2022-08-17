@@ -5,9 +5,11 @@ import OpenButton from "../components/OpenButton"
 export default function RoomsUid() {
   return (
     <>
-      <CopyLink />
-      <OpenButton />
-      <FibonacciNumber />
+      <div className="flex flex-col w-fit gap-4">
+        <CopyLink />
+        <OpenButton />
+        <FibonacciNumber />
+      </div>
     </>
   )
 }
