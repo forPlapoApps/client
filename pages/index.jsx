@@ -23,7 +23,12 @@ export default function Home() {
       <h1 className="text-3xl font-bold underline text-blue-500">
         Hello Plapo!
       </h1>
-      <Link href={`/rooms/${link}`}>ルーム作成</Link>
+      <div className="border border-gray-500 w-fit">
+        <Link href={`/rooms/${link}`}>
+          ルーム作成
+        </Link>
+
+      </div>
     </>
 
   )
