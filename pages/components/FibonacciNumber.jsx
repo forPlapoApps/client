@@ -1,12 +1,9 @@
-import { useRouter } from "next/router"
 import { useContext, useState } from "react"
 import { RoomsUidContext } from "../rooms/[uid]"
 
 export default function FibonacciNumber () {
-  const router = useRouter()
-  const { uid } = router.query
   const [num, setNum] = useState(0)
-  const { name, socket } = useContext(RoomsUidContext)
+  const { name, socket, uid } = useContext(RoomsUidContext)
 
   const selectScore = (e) => {
     setNum(e.target.value)

@@ -1,13 +1,10 @@
-import { useRouter } from "next/router"
 import { useContext, useEffect, useState } from "react"
 import { RoomsUidContext } from "../rooms/[uid]"
 
 export default function Result () {
-  const router = useRouter()
-  const { uid } = router.query
   const [list, setList] = useState([])
   const [isInProgress, setIsInProgress] = useState(true)
-  const { name, socket } = useContext(RoomsUidContext)
+  const { name, socket, uid } = useContext(RoomsUidContext)
 
   useEffect(() => {
     if (uid) {

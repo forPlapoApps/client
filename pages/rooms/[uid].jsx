@@ -6,13 +6,16 @@ import OpenButton from "../components/OpenButton"
 import Result from "../components/Result"
 import SetName from "../components/SetName"
 import { io } from "socket.io-client"
+import { useRouter } from "next/router"
 
 export const RoomsUidContext = createContext()
 
 export default function RoomsUid() {
   const [name, setName] = useState("")
   const socket = io("http://localhost:5000")
-  const value = { name, setName, socket }
+  const router = useRouter()
+  const { uid } = router.query
+  const value = { name, setName, socket, uid }
 
   useEffect(() => {
     setName(localStorage.getItem('userName'))

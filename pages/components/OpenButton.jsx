@@ -1,12 +1,9 @@
 import { useContext, useState } from "react"
-import { useRouter } from "next/router"
 import { RoomsUidContext } from "../rooms/[uid]"
 
 export default function OpenButton () {
   const [isInProgress, setIsInProgress] = useState(true)
-  const router = useRouter()
-  const { uid } = router.query
-  const { socket } = useContext(RoomsUidContext)
+  const { socket, uid } = useContext(RoomsUidContext)
 
   const openAllScore = () => {
     setIsInProgress(false)
@@ -15,7 +12,7 @@ export default function OpenButton () {
 
   const resetAllScore = () => {
     setIsInProgress(true)
-    socket.emit("resetScoreRequest", { data: { roomUid: uid}})
+    socket.emit("resetScoreRequest", { data: { roomUid: uid }})
   }
 
   return (
