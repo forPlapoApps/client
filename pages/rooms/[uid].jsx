@@ -10,9 +10,17 @@ import { useRouter } from "next/router"
 
 export const RoomsUidContext = createContext()
 
+function url() {
+  if (process.env.NODE_ENV === "development") {
+    return "http://localhost:5000"
+  } else if(process.env.NODE_ENV === "production" ) {
+    return "https://for-plapo-apps-client.vercel.app"
+  }
+}
+
 export default function RoomsUid() {
   const [name, setName] = useState("")
-  const socket = io("http://localhost:5000")
+  const socket = io(url())
   const router = useRouter()
   const { uid } = router.query
   const value = { name, setName, socket, uid }
