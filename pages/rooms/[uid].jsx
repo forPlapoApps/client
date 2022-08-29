@@ -5,12 +5,15 @@ import OpenButton from "../components/OpenButton"
 import SetName from "../components/SetName"
 import MyName from "../components/MyName"
 import Result from "../components/Result"
+import { io } from "socket.io-client"
+
+const socket = io("http://localhost:5000")
 
 export const RoomsUidContext = createContext()
 
 export default function RoomsUid() {
   const [name, setName] = useState("")
-  const value = { name, setName }
+  const value = { name, setName, socket }
 
   useEffect(() => {
     setName(localStorage.getItem('userName'))

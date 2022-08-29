@@ -1,16 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons"
-import { io } from "socket.io-client"
 import { useRouter } from "next/router"
 import { useContext } from "react"
 import { RoomsUidContext } from "../rooms/[uid]"
 
-const socket = io("http://localhost:5000")
-
 export default function MyName() {
   const router = useRouter()
   const { uid } = router.query
-  const { name, setName } = useContext(RoomsUidContext)
+  const { name, setName, socket } = useContext(RoomsUidContext)
 
   const deleteName = () => {
     localStorage.removeItem('userName')
