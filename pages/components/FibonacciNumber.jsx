@@ -1,17 +1,19 @@
 import { useRouter } from "next/router"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { io } from "socket.io-client"
+import { RoomsUidContext } from "../rooms/[uid]"
 
 const socket = io("http://localhost:5000")
 
-export default function FibonacciNumber (props) {
+export default function FibonacciNumber () {
   const router = useRouter()
   const { uid } = router.query
   const [num, setNum] = useState(0)
+  const { name } = useContext(RoomsUidContext)
 
   const selectScore = (e) => {
     setNum(e.target.value)
-    const data = { roomUid: uid, userName: props.name, value: e.target.value }
+    const data = { roomUid: uid, userName: name, value: e.target.value }
     socket.emit("sendScore", { data: data })
   }
 

@@ -1,21 +1,23 @@
 import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { io } from "socket.io-client"
+import { RoomsUidContext } from "../rooms/[uid]"
 
 const socket = io("http://localhost:5000")
 
-export default function Result (props) {
+export default function Result () {
   const router = useRouter()
   const { uid } = router.query
   const [list, setList] = useState([])
   const [isInProgress, setIsInProgress] = useState(true)
+  const { name } = useContext(RoomsUidContext)
 
   useEffect(() => {
     if (uid) {
-      const data = { roomUid: uid, userName: props.name, value: 0 }
+      const data = { roomUid: uid, userName: name, value: 0 }
       socket.emit("sendScore", { data: data })
     }
-  }, [uid, props.name])
+  }, [uid, name])
 
   useEffect(() => {
     socket.on("receivedScore", (data) => {
