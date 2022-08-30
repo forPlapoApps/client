@@ -14,20 +14,20 @@ export default function Result () {
       const data = { roomUid: uid, userName: name, value: 0 }
       socket.emit("sendScore", { data: data })
     }
-  }, [uid, name])
+  }, [uid, name, socket])
 
   useEffect(() => {
     socket.on("receivedScore", (data) => {
       setList(data)
       return () => { socket.off("receivedScore") }
     })
-  }, [])
+  }, [uid, name, socket])
 
   useEffect(() => {
     socket.on("openAllScore", () => {
       setIsInProgress(false)
     })
-  }, [])
+  }, [uid, name, socket])
 
 
   useEffect(() => {
