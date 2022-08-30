@@ -41,15 +41,20 @@ export default function Result() {
           {e.data.userName}：
           {isInProgress ? (
             e.data.value === 0 ? (
-              <p>Thinking...</p>
+              <p>Thinking...🤔</p>
             ) : (
-              <p>Selected!</p>
+              <p>Selected!✨</p>
             )
           ) : (
             <p>{e.data.value}</p>
           )}
         </div>
       ))}
+      { isInProgress? (
+        <p>progress...</p>
+      ):(
+        <p>Ave: 5.1</p>
+      )}
     </>
   )
 }
