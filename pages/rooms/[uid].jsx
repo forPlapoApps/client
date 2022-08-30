@@ -13,7 +13,14 @@ export const RoomsUidContext = createContext({})
 
 export default function RoomsUid() {
   const [name, setName] = useState("")
-  const value = { name, setName, socket }
+  const [isInProgress, setIsInProgress] = useState(true)
+  const value = {
+    name, 
+    setName, 
+    socket, 
+    isInProgress, 
+    setIsInProgress 
+  }
 
   useEffect(() => {
     setName(localStorage.getItem('userName'))

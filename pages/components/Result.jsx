@@ -6,8 +6,7 @@ export default function Result () {
   const router = useRouter()
   const { uid } = router.query
   const [list, setList] = useState([])
-  const [isInProgress, setIsInProgress] = useState(true)
-  const { name, socket } = useContext(RoomsUidContext)
+  const { name, socket, isInProgress, setIsInProgress } = useContext(RoomsUidContext)
 
   useEffect(() => {
     if (uid) {
@@ -27,12 +26,11 @@ export default function Result () {
     socket.on("openAllScore", () => {
       setIsInProgress(false)
     })
-  }, [uid, name, socket])
+  }, [uid, name, socket, setIsInProgress])
 
 
   useEffect(() => {
     socket.on("resetAllScore" , (data) => {
-      console.log(data)
       setList(data)
       setIsInProgress(true)
     })

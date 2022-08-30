@@ -3,10 +3,9 @@ import { useRouter } from "next/router"
 import { RoomsUidContext } from "../rooms/[uid]"
 
 export default function OpenButton () {
-  const [isInProgress, setIsInProgress] = useState(true)
   const router = useRouter()
   const { uid } = router.query
-  const { socket } = useContext(RoomsUidContext)
+  const { socket, isInProgress, setIsInProgress } = useContext(RoomsUidContext)
 
   const openAllScore = () => {
     setIsInProgress(false)
