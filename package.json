@@ -25,6 +25,16 @@
   },
   "devDependencies": {
     "eslint": "8.21.0",
-    "eslint-config-next": "12.2.4"
+    "eslint-config-next": "12.2.4",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "printWidth": 100
   }
 }

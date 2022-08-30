@@ -1,25 +1,25 @@
-import { useEffect, useState, createContext } from "react"
-import CopyLink from "../components/CopyLink"
-import FibonacciNumber from "../components/FibonacciNumber"
-import OpenButton from "../components/OpenButton"
-import SetName from "../components/SetName"
-import MyName from "../components/MyName"
-import Result from "../components/Result"
-import { io } from "socket.io-client"
+import { useEffect, useState, createContext } from 'react'
+import CopyLink from '../components/CopyLink'
+import FibonacciNumber from '../components/FibonacciNumber'
+import OpenButton from '../components/OpenButton'
+import SetName from '../components/SetName'
+import MyName from '../components/MyName'
+import Result from '../components/Result'
+import { io } from 'socket.io-client'
 
-const socket = io("http://localhost:5000")
+const socket = io('http://localhost:5000')
 
 export const RoomsUidContext = createContext({})
 
 export default function RoomsUid() {
-  const [name, setName] = useState("")
+  const [name, setName] = useState('')
   const [isInProgress, setIsInProgress] = useState(true)
   const value = {
-    name, 
-    setName, 
-    socket, 
-    isInProgress, 
-    setIsInProgress 
+    name,
+    setName,
+    socket,
+    isInProgress,
+    setIsInProgress,
   }
 
   useEffect(() => {
@@ -28,18 +28,18 @@ export default function RoomsUid() {
 
   return (
     <>
-      <RoomsUidContext.Provider value={ value }>
-        { name ? 
-          <div className="flex flex-col w-fit gap-4">
+      <RoomsUidContext.Provider value={value}>
+        {name ? (
+          <div className='flex flex-col w-fit gap-4'>
             <MyName />
             <CopyLink />
             <OpenButton />
             <Result />
             <FibonacciNumber />
           </div>
-          :
+        ) : (
           <SetName />
-        }
+        )}
       </RoomsUidContext.Provider>
     </>
   )

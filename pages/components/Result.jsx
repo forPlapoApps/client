@@ -1,8 +1,8 @@
-import { useRouter } from "next/router"
-import { useContext, useEffect, useState } from "react"
-import { RoomsUidContext } from "../rooms/[uid]"
+import { useRouter } from 'next/router'
+import { useContext, useEffect, useState } from 'react'
+import { RoomsUidContext } from '../rooms/[uid]'
 
-export default function Result () {
+export default function Result() {
   const router = useRouter()
   const { uid } = router.query
   const [list, setList] = useState([])
@@ -11,26 +11,27 @@ export default function Result () {
   useEffect(() => {
     if (uid) {
       const data = { roomUid: uid, userName: name, value: 0 }
-      socket.emit("sendScore", { data: data })
+      socket.emit('sendScore', { data: data })
     }
   }, [uid, name, socket])
 
   useEffect(() => {
-    socket.on("receivedScore", (data) => {
+    socket.on('receivedScore', (data) => {
       setList(data)
-      return () => { socket.off("receivedScore") }
+      return () => {
+        socket.off('receivedScore')
+      }
     })
   }, [uid, name, socket])
 
   useEffect(() => {
-    socket.on("openAllScore", () => {
+    socket.on('openAllScore', () => {
       setIsInProgress(false)
     })
   }, [uid, name, socket, setIsInProgress])
 
-
   useEffect(() => {
-    socket.on("resetAllScore" , (data) => {
+    socket.on('resetAllScore', (data) => {
       setList(data)
       setIsInProgress(true)
     })
@@ -38,18 +39,18 @@ export default function Result () {
 
   return (
     <>
-      { list.map((e, i) => (
-        <div key={i} className="flex">
-          { e.data.userName }：
-          { isInProgress ? 
-            e.data.value === 0 ?
+      {list.map((e, i) => (
+        <div key={i} className='flex'>
+          {e.data.userName}：
+          {isInProgress ? (
+            e.data.value === 0 ? (
               <p>Thinking...</p>
-            :
+            ) : (
               <p>Selected!</p>
-          :
-            <p>{ e.data.value }</p>
-          }
-          
+            )
+          ) : (
+            <p>{e.data.value}</p>
+          )}
         </div>
       ))}
     </>
