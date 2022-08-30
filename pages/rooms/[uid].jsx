@@ -9,7 +9,7 @@ import { io } from 'socket.io-client'
 import { useRouter } from 'next/router'
 
 // const url = "http://localhost:5000"
-const url = "https://for-plapo-apps-server.herokuapp.com"
+const url = 'https://for-plapo-apps-server.herokuapp.com'
 const socket = io(url, {
   closeOnBeforeunload: false,
 })
@@ -27,6 +27,7 @@ export default function RoomsUid() {
     socket,
     isInProgress,
     setIsInProgress,
+    uid,
   }
 
   const onUnload = (e, uid, name, socket) => {
