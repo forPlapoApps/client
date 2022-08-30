@@ -6,13 +6,19 @@ import SetName from '../components/SetName'
 import MyName from '../components/MyName'
 import Result from '../components/Result'
 import { io } from 'socket.io-client'
+import { useRouter } from 'next/router'
 
-// const socket = io('http://localhost:5000')
-const socket = io('https://for-plapo-apps-server.herokuapp.com')
+// const url = "http://localhost:5000"
+const url = "https://for-plapo-apps-server.herokuapp.com"
+const socket = io(url, {
+  closeOnBeforeunload: false,
+})
 
 export const RoomsUidContext = createContext({})
 
 export default function RoomsUid() {
+  const router = useRouter()
+  const { uid } = router.query
   const [name, setName] = useState('')
   const [isInProgress, setIsInProgress] = useState(true)
   const value = {
@@ -23,9 +29,27 @@ export default function RoomsUid() {
     setIsInProgress,
   }
 
+  const onUnload = (e, uid, name, socket) => {
+    if (uid && name) {
+      const data = { roomUid: uid, userName: name }
+      socket.emit('logOutRoom', { data: data })
+    }
+  }
+
   useEffect(() => {
     setName(localStorage.getItem('userName'))
   }, [])
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', (e) => {
+      onUnload(e, uid, name, socket)
+    })
+    return () => {
+      window.removeEventListener('beforeunload', (e) => {
+        onUnload(e, uid, name, socket)
+      })
+    }
+  }, [name, uid])
 
   return (
     <>
