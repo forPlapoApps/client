@@ -3,16 +3,16 @@ import { faCopy } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
-export default function CopyLink () {
-  const [text, setText] = useState("リンクをコピーできます")
-  const [link, setLink] = useState("")
+export default function CopyLink() {
+  const [text, setText] = useState('リンクをコピーできます')
+  const [link, setLink] = useState('')
 
-  const sleep = waitTime => new Promise( resolve => setTimeout(resolve, waitTime) )
+  const sleep = (waitTime) => new Promise((resolve) => setTimeout(resolve, waitTime))
 
   const copyLink = async () => {
-    setText("コピーしました！")
+    setText('コピーしました！')
     await sleep(2000)
-    setText("リンクをコピーできます")
+    setText('リンクをコピーできます')
   }
 
   useEffect(() => {
@@ -22,14 +22,12 @@ export default function CopyLink () {
 
   return (
     <>
-      <p>{ text }</p>
+      <p>{text}</p>
 
-      <CopyToClipboard text={link} onCopy={() => copyLink() }>
-
+      <CopyToClipboard text={link} onCopy={() => copyLink()}>
         <button className='btn'>
-          <FontAwesomeIcon icon={faCopy} className="text-2xl" />
+          <FontAwesomeIcon icon={faCopy} className='text-2xl' />
         </button>
-          
       </CopyToClipboard>
     </>
   )
