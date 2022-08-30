@@ -1,11 +1,8 @@
-import { useContext, useState } from 'react'
-import { useRouter } from 'next/router'
+import { useContext } from 'react'
 import { RoomsUidContext } from '../rooms/[uid]'
 
 export default function OpenButton() {
-  const router = useRouter()
-  const { uid } = router.query
-  const { socket, isInProgress, setIsInProgress } = useContext(RoomsUidContext)
+  const { socket, isInProgress, setIsInProgress, uid } = useContext(RoomsUidContext)
 
   const openAllScore = () => {
     setIsInProgress(false)
