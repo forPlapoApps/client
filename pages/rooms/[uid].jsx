@@ -7,7 +7,8 @@ import MyName from '../components/MyName'
 import Result from '../components/Result'
 import { io } from 'socket.io-client'
 
-const socket = io('http://localhost:5000')
+// const socket = io('http://localhost:5000')
+const socket = io('https://for-plapo-apps-server.herokuapp.com')
 
 export const RoomsUidContext = createContext({})
 
