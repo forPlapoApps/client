@@ -7,6 +7,7 @@ import MyName from '../components/MyName'
 import Result from '../components/Result'
 import { io } from 'socket.io-client'
 import { useRouter } from 'next/router'
+import Title from '../components/Title'
 
 // const url = 'http://localhost:5000'
 const url = 'https://for-plapo-apps-server.herokuapp.com'
@@ -58,6 +59,7 @@ export default function RoomsUid() {
         {name ? (
           <div className='w-screen h-screen p-4 flex flex-col justify-between'>
             <div className='flex'>
+              <Title />
               <CopyLink />
             </div>
             <div className='flex'>
