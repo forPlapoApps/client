@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from 'react'
 import { RoomsUidContext } from '../rooms/[uid]'
 
@@ -15,12 +15,9 @@ export default function MyName() {
 
   return (
     <>
-      <p>hello, {name}!!</p>
-      <button
-        onClick={deleteName}
-        className='w-20 border border-gray-500 hover:bg-primary hover:text-white'
-      >
-        <FontAwesomeIcon icon={faRightFromBracket} />
+      <button onClick={deleteName} className='btn btn-sm my-auto gap-2'>
+        <FontAwesomeIcon icon={faAngleLeft} />
+        <p>Change Name</p>
       </button>
     </>
   )
