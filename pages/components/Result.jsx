@@ -3,6 +3,7 @@ import { RoomsUidContext } from '../rooms/[uid]'
 
 export default function Result() {
   const [list, setList] = useState([])
+  const [average, setAverage] = useState(0)
   const { name, socket, isInProgress, setIsInProgress, uid } = useContext(RoomsUidContext)
 
   useEffect(() => {
@@ -20,6 +21,15 @@ export default function Result() {
       }
     })
   }, [uid, name, socket])
+
+  useEffect(() => {
+    let total = 0
+    list.forEach((e) => {
+      total = Number(total) + Number(e.data.value)
+    })
+    const average = total / list.length
+    setAverage(average)
+  }, [average, list, uid])
 
   useEffect(() => {
     socket.on('openAllScore', () => {
@@ -50,11 +60,7 @@ export default function Result() {
           )}
         </div>
       ))}
-      { isInProgress? (
-        <p>progress...</p>
-      ):(
-        <p>Ave: 5.1</p>
-      )}
+      {isInProgress ? <p>progress...</p> : <p>Ave: {average}</p>}
     </>
   )
 }
