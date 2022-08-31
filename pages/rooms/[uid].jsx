@@ -8,7 +8,7 @@ import Result from '../components/Result'
 import { io } from 'socket.io-client'
 import { useRouter } from 'next/router'
 
-// const url = "http://localhost:5000"
+// const url = 'http://localhost:5000'
 const url = 'https://for-plapo-apps-server.herokuapp.com'
 const socket = io(url, {
   closeOnBeforeunload: false,
@@ -56,12 +56,21 @@ export default function RoomsUid() {
     <>
       <RoomsUidContext.Provider value={value}>
         {name ? (
-          <div className='flex flex-col w-fit gap-4'>
-            <MyName />
-            <CopyLink />
-            <OpenButton />
-            <Result />
-            <FibonacciNumber />
+          <div className='w-screen h-screen'>
+            <div className='flex'>
+              <CopyLink />
+            </div>
+            <div className='flex'>
+              <Result />
+            </div>
+            <div className='flex'>
+              {/* culculateNumber */}
+              <Result />
+            </div>
+            <div className='flex'>
+              <MyName />
+              <FibonacciNumber />
+            </div>
           </div>
         ) : (
           <SetName />
