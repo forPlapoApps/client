@@ -1,18 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCopy } from '@fortawesome/free-solid-svg-icons'
+import { faCopy, faCheck } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 export default function CopyLink() {
-  const [text, setText] = useState('リンクをコピーできます')
   const [link, setLink] = useState('')
+  const [icon, setIcon] = useState(faCopy)
 
   const sleep = (waitTime) => new Promise((resolve) => setTimeout(resolve, waitTime))
 
   const copyLink = async () => {
-    setText('コピーしました！')
+    setIcon(faCheck)
     await sleep(2000)
-    setText('リンクをコピーできます')
+    setIcon(faCopy)
   }
 
   useEffect(() => {
@@ -22,11 +22,9 @@ export default function CopyLink() {
 
   return (
     <>
-      <p>{text}</p>
-
       <CopyToClipboard text={link} onCopy={() => copyLink()}>
-        <button className='btn'>
-          <FontAwesomeIcon icon={faCopy} className='text-2xl' />
+        <button className='btn ml-auto copy-button'>
+          <FontAwesomeIcon icon={icon} className='text-2xl' />
         </button>
       </CopyToClipboard>
     </>
