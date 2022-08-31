@@ -56,7 +56,7 @@ export default function RoomsUid() {
     <>
       <RoomsUidContext.Provider value={value}>
         {name ? (
-          <div className='w-screen h-screen'>
+          <div className='w-screen h-screen p-4'>
             <div className='flex'>
               <CopyLink />
             </div>
