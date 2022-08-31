@@ -20,9 +20,13 @@ export default function Home() {
 
   return (
     <>
-      <h1 className='text-3xl font-bold underline text-blue-500'>Hello Plapo!</h1>
-      <div className='border border-gray-500 w-fit'>
-        <Link href={`/rooms/${link}`}>ルーム作成</Link>
+      <div className='w-screen h-screen flex'>
+        <div className='mx-auto my-10 w-fit flex flex-col gap-10'>
+          <h1 className='text-3xl font-bold underline text-blue-500'>forPlapoApps!</h1>
+          <Link href={`/rooms/${link}`}>
+            <div className='btn btn-primary'>ルーム作成</div>
+          </Link>
+        </div>
       </div>
     </>
   )
