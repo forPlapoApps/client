@@ -14,6 +14,8 @@ export default function FibonacciNumber() {
   const isMyOwnJudgement = (seletedNumber) => {
     if (seletedNumber === Number(number)) {
       return 'btn-lg my-auto'
+    } else {
+      return 'my-5'
     }
   }
   return (
@@ -22,7 +24,7 @@ export default function FibonacciNumber() {
         {[1, 2, 3, 5, 8, 13, 21, 42].map((num, i) => (
           <label
             htmlFor={num}
-            className={`btn btn-primary my-5 ${isMyOwnJudgement(num)}`}
+            className={`btn btn-primary ${isMyOwnJudgement(num)}`}
             key={i}
             onChange={(e) => selectScore(e)}
           >
