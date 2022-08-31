@@ -65,7 +65,7 @@ export default function RoomsUid() {
             </div>
             <div className='flex'>
               {/* culculateNumber */}
-              <Result />
+              <OpenButton />
             </div>
             <div className='flex'>
               <MyName />
