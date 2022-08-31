@@ -16,15 +16,17 @@ export default function OpenButton() {
 
   return (
     <>
-      {isInProgress ? (
-        <button className='btn btn-primary' onClick={openAllScore}>
-          Open
-        </button>
-      ) : (
-        <button className='btn' onClick={resetAllScore}>
-          Reset
-        </button>
-      )}
+      <div className='mx-auto'>
+        {isInProgress ? (
+          <button className='btn btn-primary' onClick={openAllScore}>
+            Open
+          </button>
+        ) : (
+          <button className='btn' onClick={resetAllScore}>
+            Reset
+          </button>
+        )}
+      </div>
     </>
   )
 }
