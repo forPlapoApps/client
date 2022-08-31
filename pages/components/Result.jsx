@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { RoomsUidContext } from '../rooms/[uid]'
+import Spinner from './Spinner'
 
 export default function Result() {
   const [list, setList] = useState([])
@@ -46,20 +47,26 @@ export default function Result() {
 
   return (
     <>
-      {list.map((e, i) => (
-        <div key={i} className='flex'>
-          {e.data.userName}：
-          {isInProgress ? (
-            e.data.value === 0 ? (
-              <p>Thinking...🤔</p>
-            ) : (
-              <p>Selected!✨</p>
-            )
-          ) : (
-            <p>{e.data.value}</p>
-          )}
+      {list[0] ? (
+        <div>
+          {list.map((e, i) => (
+            <div key={i} className='flex'>
+              {e.data.userName}：
+              {isInProgress ? (
+                e.data.value === 0 ? (
+                  <p>Thinking...🤔</p>
+                ) : (
+                  <p>Selected!✨</p>
+                )
+              ) : (
+                <p>{e.data.value}</p>
+              )}
+            </div>
+          ))}
         </div>
-      ))}
+      ) : (
+        <Spinner />
+      )}
       {isInProgress ? <p>progress...</p> : <p>Ave: {average}</p>}
     </>
   )
