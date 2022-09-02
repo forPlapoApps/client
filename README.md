@@ -9,18 +9,23 @@
 - yarn：1.22.19
 ## 環境構築
 - クローン
-> $ mkdir forPlapoApps
->
-> $ git clone https://github.com/forPlapoApps/client.git
->
-> $ git clone https://github.com/forPlapoApps/server.git
+
+$ mkdir forPlapoApps
+
+$ cd forPlapoApps
+
+$ git clone https://github.com/forPlapoApps/client.git
+
+$ git clone https://github.com/forPlapoApps/server.git
 
 - フロント
-> $ cd client
-> 
-> $ yarn install
-> 
-> $ yarn dev
+```
+$ cd client
+
+$ yarn install
+
+$ yarn dev
+```
 
 localhost:3000で起動
 
@@ -32,12 +37,14 @@ const url = "http://localhost:5000"
 // const url = 'https://for-plapo-apps-server.herokuapp.com'
 ```
 
-
 - サーバー
-> $ cd server
-> 
-> $ yarn install
-> 
-> $ yarn start
+
+```
+$ cd server
+
+$ yarn install
+
+$ yarn start
+```
 
 localhost:5000で起動
