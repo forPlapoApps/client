@@ -8,7 +8,7 @@ import Result from '../components/Result'
 import { io } from 'socket.io-client'
 import { useRouter } from 'next/router'
 
-// const url = "http://localhost:5000"
+// const url = "http://localhost:8000"
 const url = 'https://for-plapo-apps-server.herokuapp.com'
 const socket = io(url, {
   closeOnBeforeunload: false,
