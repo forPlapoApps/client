@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from 'react'
 import { RoomsUidContext } from '../rooms/[uid]'
 import Spinner from './Spinner'
+import ResultName from './Result/Name'
+import ResultNumber from './Result/Number'
 
 export default function Result() {
   const [list, setList] = useState([])
@@ -23,14 +25,14 @@ export default function Result() {
     })
   }, [uid, name, socket])
 
-  useEffect(() => {
-    let total = 0
-    list.forEach((e) => {
-      total = Number(total) + Number(e.data.value)
-    })
-    const average = total / list.length
-    setAverage(average)
-  }, [average, list, uid])
+  // useEffect(() => {
+  //   let total = 0
+  //   list.forEach((e) => {
+  //     total = Number(total) + Number(e.data.value)
+  //   })
+  //   const average = total / list.length
+  //   setAverage(average)
+  // }, [average, list, uid])
 
   useEffect(() => {
     socket.on('openAllScore', () => {
@@ -48,26 +50,18 @@ export default function Result() {
   return (
     <>
       {list[0] ? (
-        <div>
+        <div className='flex gap-4 mx-auto'>
           {list.map((e, i) => (
-            <div key={i} className='flex'>
-              {e.data.userName}：
-              {isInProgress ? (
-                e.data.value === 0 ? (
-                  <p>Thinking...🤔</p>
-                ) : (
-                  <p>Selected!✨</p>
-                )
-              ) : (
-                <p>{e.data.value}</p>
-              )}
+            <div key={i} className='flex flex-col gap-2 '>
+              <ResultNumber score={e.data.value} />
+              <ResultName name={e.data.userName} />
             </div>
           ))}
         </div>
       ) : (
         <Spinner />
       )}
-      {isInProgress ? <p>progress...</p> : <p>Ave: {average}</p>}
+      {/* {isInProgress ? <p>progress...</p> : <p>Ave: {average}</p>} */}
     </>
   )
 }
