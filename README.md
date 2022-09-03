@@ -30,10 +30,10 @@ $ yarn dev
 localhost:3000で起動
 
 ```JSX
-// const url = "http://localhost:5000"
+// const url = "http://localhost:8000"
 const url = 'https://for-plapo-apps-server.herokuapp.com'
 ↓
-const url = "http://localhost:5000"
+const url = "http://localhost:8000"
 // const url = 'https://for-plapo-apps-server.herokuapp.com'
 ```
 
@@ -47,4 +47,4 @@ $ yarn install
 $ yarn start
 ```
 
-localhost:5000で起動
+localhost:8000で起動
