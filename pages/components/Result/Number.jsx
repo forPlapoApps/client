@@ -8,11 +8,11 @@ export default function ResultNumber(props) {
       {isInProgress ? (
         props.score === 0 ? (
           <div className='h-60 w-36 rounded-xl bg-primary-content flex'>
-            <p className='m-auto text-5xl'>🤔</p>
+            <p className='m-auto text-xl'>considering...</p>
           </div>
         ) : (
           <div className='h-60 w-36 rounded-xl bg-neutral-content flex'>
-            <p className='m-auto text-5xl'>👍</p>
+            <p className='m-auto text-xl'>ready!!</p>
           </div>
         )
       ) : (
