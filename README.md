@@ -27,15 +27,14 @@ $ yarn install
 $ yarn dev
 ```
 
+```.env.local```ファイルを作成し、
+```
+SERVER_URL="http://localhost:8000"
+```
+と記述する。
+
 localhost:3000で起動
 
-```JSX
-// const url = "http://localhost:8000"
-const url = 'https://for-plapo-apps-server.herokuapp.com'
-↓
-const url = "http://localhost:8000"
-// const url = 'https://for-plapo-apps-server.herokuapp.com'
-```
 
 - サーバー
 
