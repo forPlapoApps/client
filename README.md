@@ -8,8 +8,8 @@
 - npm：8.5.4
 - yarn：1.22.19
 ## 環境構築
-- クローン
-
+### クローン
+```
 $ mkdir forPlapoApps
 
 $ cd forPlapoApps
@@ -17,8 +17,9 @@ $ cd forPlapoApps
 $ git clone https://github.com/forPlapoApps/client.git
 
 $ git clone https://github.com/forPlapoApps/server.git
+```
 
-- フロント
+### フロント
 ```
 $ cd client
 
@@ -36,7 +37,7 @@ SERVER_URL="http://localhost:8000"
 localhost:3000で起動
 
 
-- サーバー
+### サーバー
 
 ```
 $ cd server
