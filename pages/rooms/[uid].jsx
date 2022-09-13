@@ -32,19 +32,15 @@ export default function RoomsUid() {
     uid,
   }
 
-  const onUnload = (e, uid, name, socket) => {
-    if (uid && name) {
-      const data = { roomUid: uid, userName: name }
-      socket.emit('logOutRoom', { data: data })
-    }
-  }
-
   useEffect(() => {
     setName(localStorage.getItem('userName'))
   }, [])
 
   useBeforeunload((e) => {
-    onUnload(e, uid, name, socket)
+    if (uid && name) {
+      const data = { roomUid: uid, userName: name }
+      socket.emit('logOutRoom', { data: data })
+    }
   })
 
   return (
