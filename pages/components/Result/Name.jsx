@@ -3,9 +3,7 @@ import { RoomsUidContext } from '../../rooms/[uid]'
 
 export default function ResultName(props) {
   const { name } = useContext(RoomsUidContext)
-  const isMyName = (value) => {
-    return value === name
-  }
+  const isMyName = (value) => { return value === name}
 
   return (
     <>
