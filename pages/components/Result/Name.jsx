@@ -1,8 +1,8 @@
-import { useContext } from "react"
-import { RoomsUidContext } from "../../rooms/[uid]"
+import { useContext } from 'react'
+import { RoomsUidContext } from '../../rooms/[uid]'
 
 export default function ResultName(props) {
-  const { name } = useContext(RoomsUidContext) 
+  const { name } = useContext(RoomsUidContext)
   const isMyName = (value) => {
     return value === name
   }
@@ -10,7 +10,9 @@ export default function ResultName(props) {
   return (
     <>
       <div className='flex'>
-        <p className={`mx-auto font-bold ${isMyName(props.name) ? 'text-accent text-xl' : ''}`}>{props.name}</p>
+        <p className={`mx-auto font-bold ${isMyName(props.name) ? 'text-accent text-xl' : ''}`}>
+          {props.name}
+        </p>
       </div>
     </>
   )
