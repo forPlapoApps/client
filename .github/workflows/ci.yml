@@ -15,6 +15,6 @@ jobs:
       - name: Install packages
         run: rm -rf node_modules && yarn install --frozen-lockfile
       - name: Prettier
-        run: yarn format
+        run: yarn prettier
       - name: Lint
         run: yarn lint
