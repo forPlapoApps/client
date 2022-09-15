@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "yarn lint --fix",
+    "prettier": "prettier --check --ignore-path .gitignore .",
+    "prettier:fix": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
@@ -28,13 +31,5 @@
     "eslint-config-next": "12.2.4",
     "eslint-config-prettier": "^8.5.0",
     "prettier": "^2.7.1"
-  },
-  "prettier": {
-    "trailingComma": "all",
-    "tabWidth": 2,
-    "semi": false,
-    "singleQuote": true,
-    "jsxSingleQuote": true,
-    "printWidth": 100
   }
 }

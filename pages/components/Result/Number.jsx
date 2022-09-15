@@ -17,7 +17,7 @@ export default function ResultNumber(props) {
         )
       ) : (
         <div className='h-60 w-36 rounded-xl bg-primary flex'>
-          <p className='m-auto text-5xl text-white'>{ props.score }</p>
+          <p className='m-auto text-5xl text-white'>{props.score}</p>
         </div>
       )}
     </>
