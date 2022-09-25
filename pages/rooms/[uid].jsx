@@ -8,9 +8,10 @@ import Result from '../components/Result'
 import { io } from 'socket.io-client'
 import { useRouter } from 'next/router'
 import Title from '../components/Title'
+import UserCalculate from '../components/UserCalculate'
 
-// const url = "http://localhost:8000"
-const url = 'https://for-plapo-apps-server.herokuapp.com'
+const url = "http://localhost:8000"
+// const url = 'https://for-plapo-apps-server.herokuapp.com'
 const socket = io(url, {
   closeOnBeforeunload: false,
 })
@@ -61,6 +62,7 @@ export default function RoomsUid() {
             <div className='flex'>
               <Title />
               <CopyLink />
+              <UserCalculate />
             </div>
             <div className='flex'>
               <Result />
