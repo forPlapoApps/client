@@ -8,6 +8,7 @@ import Result from '../components/Result'
 import { io } from 'socket.io-client'
 import { useRouter } from 'next/router'
 import Title from '../components/Title'
+import { useBeforeunload } from 'react-beforeunload'
 
 // const url = "http://localhost:8000"
 const url = 'https://for-plapo-apps-server.herokuapp.com'
@@ -31,27 +32,16 @@ export default function RoomsUid() {
     uid,
   }
 
-  const onUnload = (e, uid, name, socket) => {
-    if (uid && name) {
-      const data = { roomUid: uid, userName: name }
-      socket.emit('logOutRoom', { data: data })
-    }
-  }
-
   useEffect(() => {
     setName(localStorage.getItem('userName'))
   }, [])
 
-  useEffect(() => {
-    window.addEventListener('beforeunload', (e) => {
-      onUnload(e, uid, name, socket)
-    })
-    return () => {
-      window.removeEventListener('beforeunload', (e) => {
-        onUnload(e, uid, name, socket)
-      })
+  useBeforeunload((e) => {
+    if (uid && name) {
+      const data = { roomUid: uid, userName: name }
+      socket.emit('logOutRoom', { data: data })
     }
-  }, [name, uid])
+  })
 
   return (
     <>
