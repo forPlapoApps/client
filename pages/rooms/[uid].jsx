@@ -22,6 +22,9 @@ export default function RoomsUid() {
   const { uid } = router.query
   const [name, setName] = useState('')
   const [isInProgress, setIsInProgress] = useState(true)
+  const [resultAverage, setResultAverage] = useState(0)
+  const [resultAgreement, setResultAgreement] = useState('')
+
   const value = {
     name,
     setName,
@@ -52,11 +55,10 @@ export default function RoomsUid() {
               <CopyLink />
             </div>
             <div className='flex'>
-              <Result />
+              <Result setResultAverage={setResultAverage} setResultAgreement={setResultAgreement} />
             </div>
             <div className='flex'>
-              {/* culculateNumber */}
-              <OpenButton />
+              <OpenButton resultAverage={resultAverage} resultAgreement={resultAgreement} />
             </div>
             <div className='flex'>
               <MyName />

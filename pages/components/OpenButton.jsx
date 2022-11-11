@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { RoomsUidContext } from '../rooms/[uid]'
 
-export default function OpenButton() {
+export default function OpenButton(props) {
   const { socket, isInProgress, setIsInProgress, uid } = useContext(RoomsUidContext)
 
   const openAllScore = () => {
@@ -22,9 +22,13 @@ export default function OpenButton() {
             Open
           </button>
         ) : (
-          <button className='btn' onClick={resetAllScore}>
-            Reset
-          </button>
+          <div className="flex gap-8">
+            <p className="text-2xl my-auto font-bold">Ave: { props.resultAverage }</p>
+            <p className="text-2xl my-auto font-bold">Agreement: { props.resultAgreement }</p>
+            <button className='btn' onClick={resetAllScore}>
+              Reset
+            </button>
+          </div>
         )}
       </div>
     </>
