@@ -8,8 +8,8 @@
 - npm：8.5.4
 - yarn：1.22.19
 ## 環境構築
-- クローン
-
+### クローン
+```
 $ mkdir forPlapoApps
 
 $ cd forPlapoApps
@@ -17,8 +17,9 @@ $ cd forPlapoApps
 $ git clone https://github.com/forPlapoApps/client.git
 
 $ git clone https://github.com/forPlapoApps/server.git
+```
 
-- フロント
+### フロント
 ```
 $ cd client
 
@@ -27,17 +28,16 @@ $ yarn install
 $ yarn dev
 ```
 
+```.env.local```ファイルを作成し、
+```
+SERVER_URL="http://localhost:8000"
+```
+と記述する。
+
 localhost:3000で起動
 
-```JSX
-// const url = "http://localhost:8000"
-const url = 'https://for-plapo-apps-server.herokuapp.com'
-↓
-const url = "http://localhost:8000"
-// const url = 'https://for-plapo-apps-server.herokuapp.com'
-```
 
-- サーバー
+### サーバー
 
 ```
 $ cd server
