@@ -4,9 +4,9 @@ import Spinner from './Spinner'
 import ResultName from './Result/Name'
 import ResultNumber from './Result/Number'
 
-export default function Result() {
+export default function Result(props) {
   const [list, setList] = useState([])
-  const [average, setAverage] = useState(0)
+  // const [average, setAverage] = useState(0)
   const { name, socket, isInProgress, setIsInProgress, uid } = useContext(RoomsUidContext)
 
   useEffect(() => {
@@ -25,14 +25,14 @@ export default function Result() {
     })
   }, [uid, name, socket])
 
-  // useEffect(() => {
-  //   let total = 0
-  //   list.forEach((e) => {
-  //     total = Number(total) + Number(e.data.value)
-  //   })
-  //   const average = total / list.length
-  //   setAverage(average)
-  // }, [average, list, uid])
+  useEffect(() => {
+    let total = 0
+    list.forEach((e) => {
+      total = Number(total) + Number(e.data.value)
+    })
+    const average = total / list.length
+    props.setResultAverage(average)
+  }, [list, uid, props])
 
   useEffect(() => {
     socket.on('openAllScore', () => {
