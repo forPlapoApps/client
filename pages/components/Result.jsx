@@ -3,6 +3,7 @@ import { RoomsUidContext } from '../rooms/[uid]'
 import Spinner from './Spinner'
 import ResultName from './Result/Name'
 import ResultNumber from './Result/Number'
+import agreement from '../../utils/calcutateAgreement'
 
 export default function Result(props) {
   const [list, setList] = useState([])
@@ -30,8 +31,13 @@ export default function Result(props) {
     list.forEach((e) => {
       total = Number(total) + Number(e.data.value)
     })
-    const average = total / list.length
+    const average = Math.round(total / list.length * 10) / 10
+    const valueArray = list.map((e) => {
+      return Number(e.data.value)
+    })
+
     props.setResultAverage(average)
+    props.setResultAgreement(agreement(valueArray))
   }, [list, uid, props])
 
   useEffect(() => {

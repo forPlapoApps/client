@@ -13,7 +13,7 @@ const Mode = (array) => {
   let newArray = []
   let check = false // 重複チェッカー
 
-  array.forEach(e => {
+  array.forEach((e) => {
     if (newArray.filter((f) => f.value == e)[0]) {
       const oldHash = newArray.filter((g) => g.value == e)[0]
       const count = oldHash.count + 1
@@ -23,9 +23,9 @@ const Mode = (array) => {
     } else {
       newArray.push({ value: e, count: 1 })
     }
-  });
+  })
 
-  const countArray = newArray.map((c) => c.count )
+  const countArray = newArray.map((c) => c.count)
   const max = Math.max(...countArray)
 
   const result = check ? newArray.filter((i) => i.count == max)[0].value : 0
@@ -33,15 +33,19 @@ const Mode = (array) => {
 }
 
 const agreement = (estimateArray) => {
+  if (estimateArray.length == 0) {
+    return
+  }
   let newArray = estimateArray.map((e) => {
-    return estimates.filter((estimate) => estimate.value == e)[0].id
+    return estimates.filter((estimate) => estimate.value == e)[0]?.id
   })
 
   const mode = Mode(newArray)
   const modeLength = newArray.filter((e) => e == mode).length
   const arrayLength = newArray.length
+  const result = Math.round((modeLength / arrayLength)* 100 * 10) / 10
 
-  return `${modeLength / arrayLength * 100}%`
+  return `${result}%`
 }
 
-console.log(agreement([8, 8, 8, 5]))
+export default agreement

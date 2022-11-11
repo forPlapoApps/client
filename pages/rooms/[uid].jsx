@@ -23,6 +23,8 @@ export default function RoomsUid() {
   const [name, setName] = useState('')
   const [isInProgress, setIsInProgress] = useState(true)
   const [resultAverage, setResultAverage] = useState(0)
+  const [resultAgreement, setResultAgreement] = useState('')
+
   const value = {
     name,
     setName,
@@ -53,10 +55,10 @@ export default function RoomsUid() {
               <CopyLink />
             </div>
             <div className='flex'>
-              <Result setResultAverage={setResultAverage} />
+              <Result setResultAverage={setResultAverage} setResultAgreement={setResultAgreement} />
             </div>
             <div className='flex'>
-              <OpenButton resultAverage={resultAverage} />
+              <OpenButton resultAverage={resultAverage} resultAgreement={resultAgreement} />
             </div>
             <div className='flex'>
               <MyName />

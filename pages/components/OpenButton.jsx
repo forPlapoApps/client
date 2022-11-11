@@ -24,7 +24,7 @@ export default function OpenButton(props) {
         ) : (
           <div className="flex gap-8">
             <p className="text-2xl my-auto font-bold">Ave: { props.resultAverage }</p>
-            <p className="text-2xl my-auto font-bold">Agreement: 80%</p>
+            <p className="text-2xl my-auto font-bold">Agreement: { props.resultAgreement }</p>
             <button className='btn' onClick={resetAllScore}>
               Reset
             </button>
