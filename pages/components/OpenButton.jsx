@@ -22,9 +22,13 @@ export default function OpenButton() {
             Open
           </button>
         ) : (
-          <button className='btn' onClick={resetAllScore}>
-            Reset
-          </button>
+          <div className="flex gap-8">
+            <p className="text-2xl my-auto font-bold">Ave: 5.1</p>
+            <p className="text-2xl my-auto font-bold">Agreement: 80%</p>
+            <button className='btn' onClick={resetAllScore}>
+              Reset
+            </button>
+          </div>
         )}
       </div>
     </>
