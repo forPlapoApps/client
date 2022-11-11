@@ -19,7 +19,9 @@ export default function Result(props) {
 
   useEffect(() => {
     socket.on('receivedScore', (data) => {
-      setList(data)
+      setList(data.sort((a, b) => {
+        return a.data.userName.localeCompare(b.data.userName, 'ja')
+      } ))
       return () => {
         socket.off('receivedScore')
       }
@@ -48,7 +50,9 @@ export default function Result(props) {
 
   useEffect(() => {
     socket.on('resetAllScore', (data) => {
-      setList(data)
+      setList(data.sort((a, b) => {
+        return a.data.userName.localeCompare(b.data.userName, 'ja')
+      } ))
       setIsInProgress(true)
     })
   })
