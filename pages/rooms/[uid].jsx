@@ -10,8 +10,7 @@ import { useRouter } from 'next/router'
 import Title from '../components/Title'
 import { useBeforeunload } from 'react-beforeunload'
 
-// const url = "http://localhost:8000"
-const url = 'https://for-plapo-apps-server.herokuapp.com'
+const url = process.env.SERVER_URL
 const socket = io(url, {
   closeOnBeforeunload: false,
 })
