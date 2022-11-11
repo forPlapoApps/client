@@ -1,9 +1,9 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { RoomsUidContext } from '../rooms/[uid]'
 
 export default function FibonacciNumber() {
   const [number, setNumber] = useState(0)
-  const { name, socket, uid } = useContext(RoomsUidContext)
+  const { name, socket, uid, isInProgress } = useContext(RoomsUidContext)
 
   const selectScore = (e) => {
     setNumber(e.target.value)
@@ -18,6 +18,11 @@ export default function FibonacciNumber() {
       return 'my-5'
     }
   }
+
+  useEffect(() => {
+    setNumber(0)
+  }, [isInProgress])
+
   return (
     <>
       <div className='flex gap-2 ml-auto mr-10'>
@@ -26,7 +31,7 @@ export default function FibonacciNumber() {
             htmlFor={num}
             className={`btn btn-primary ${isMyOwnJudgement(num)}`}
             key={i}
-            onChange={(e) => selectScore(e)}
+            onClick={(e) => selectScore(e)}
           >
             {num}
             <input type='radio' name='selectNumber' value={num} id={num} className='hidden' />

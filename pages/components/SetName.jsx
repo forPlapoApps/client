@@ -12,9 +12,15 @@ export default function SetName() {
 
   return (
     <>
-      <div className='flex'>
-        <p>名前を入力してください</p>
-        <input type='text' className='border border-gray-500' onKeyPress={(e) => keyPress(e)} />
+      <div className='flex w-screen'>
+        <div className='mx-auto w-fit m-20 flex flex-col gap-4'>
+          <p className='text-primary text-2xl font-bold'>名前を入力してください</p>
+          <input
+            type='text'
+            className='input input-bordered w-full'
+            onKeyPress={(e) => keyPress(e)}
+          />
+        </div>
       </div>
     </>
   )
