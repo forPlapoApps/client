@@ -3,7 +3,7 @@ import CopyLink from 'components/CopyLink'
 import FibonacciNumber from '../components/FibonacciNumber'
 import OpenButton from '../components/OpenButton'
 import SetName from '../components/SetName'
-import MyName from '../components/MyName'
+import ChangeNameButton from 'components/ChangeNameButton'
 import Result from '../components/Result'
 import { io } from 'socket.io-client'
 import { useRouter } from 'next/router'
@@ -61,7 +61,7 @@ export default function RoomsUid() {
               <OpenButton resultAverage={resultAverage} resultAgreement={resultAgreement} />
             </div>
             <div className='flex'>
-              <MyName />
+              <ChangeNameButton />
               <FibonacciNumber />
             </div>
           </div>
