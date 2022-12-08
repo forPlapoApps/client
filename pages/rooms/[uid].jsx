@@ -1,5 +1,5 @@
 import { useEffect, useState, createContext } from 'react'
-import CopyLink from '../components/CopyLink'
+import CopyLink from 'components/CopyLink'
 import FibonacciNumber from '../components/FibonacciNumber'
 import OpenButton from '../components/OpenButton'
 import SetName from '../components/SetName'

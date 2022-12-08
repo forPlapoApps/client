@@ -1,9 +1,10 @@
+import { memo } from 'react'
 import { useRouter } from '../node_modules/next/router'
 import { logout } from '../services/plapo/logout'
 
 type InitialProps = { uid: string }
 
-const Title = ({ uid }: InitialProps) => {
+const Title = memo(function TitleMemo({ uid }: InitialProps) {
   const router = useRouter()
   const name = localStorage.getItem('userName')
 
@@ -19,6 +20,6 @@ const Title = ({ uid }: InitialProps) => {
       </p>
     </div>
   )
-}
+})
 
 export default Title
