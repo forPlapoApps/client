@@ -7,7 +7,7 @@ import MyName from '../components/MyName'
 import Result from '../components/Result'
 import { io } from 'socket.io-client'
 import { useRouter } from 'next/router'
-import Title from '../components/Title'
+import Title from 'components/Title'
 import { useBeforeunload } from 'react-beforeunload'
 
 const url = process.env.SERVER_URL
@@ -51,7 +51,7 @@ export default function RoomsUid() {
         {name ? (
           <div className='w-screen h-screen p-4 flex flex-col justify-between'>
             <div className='flex'>
-              <Title />
+              <Title uid={uid} />
               <CopyLink />
             </div>
             <div className='flex'>
