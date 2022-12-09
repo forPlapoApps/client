@@ -1,24 +1,15 @@
 import { useEffect, useState } from 'react'
-import socket from 'lib/socket'
+import { sendScore } from 'services/plapo/sendScore'
+import { isMyOwnJudgement } from 'utils/isMyOwnJudgement'
 
 const FibonacciNumbers = ({ uid, isInProgress }) => {
   const numbers = [1, 2, 3, 5, 8, 13, 21, 42]
   const name = localStorage.getItem('userName')
-  const [number, setNumber] = useState(0)
+  const [number, setNumber] = useState<number>(0)
 
-  const selectScore = (value) => {
+  const selectScore = (value: number) => {
     setNumber(value)
-    const data = { roomUid: uid, userName: name, value: Number(value) }
-    console.log(data)
-    socket.emit('sendScore', { data: data })
-  }
-
-  const isMyOwnJudgement = (seletedNumber) => {
-    if (seletedNumber === Number(number)) {
-      return 'btn-lg my-auto'
-    } else {
-      return 'my-5'
-    }
+    sendScore(uid, name, value)
   }
 
   useEffect(() => {
@@ -30,7 +21,7 @@ const FibonacciNumbers = ({ uid, isInProgress }) => {
       {numbers.map((num, i) => (
         <label
           htmlFor={num.toString()}
-          className={`btn btn-primary ${isMyOwnJudgement(num)}`}
+          className={`btn btn-primary ${isMyOwnJudgement(number, num)}`}
           key={i}
         >
           {num}
@@ -40,7 +31,7 @@ const FibonacciNumbers = ({ uid, isInProgress }) => {
             value={num}
             id={`${num}`}
             className='hidden'
-            onClick={(e) => selectScore((e.target as HTMLInputElement).value)}
+            onClick={(e) => selectScore(Number((e.target as HTMLInputElement).value))}
           />
         </label>
       ))}
