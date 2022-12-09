@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { RoomsUidContext } from '../rooms/[uid]'
-import Spinner from './Spinner'
+import Spinner from 'components/Spinner'
 import ResultName from './Result/Name'
 import ResultNumber from './Result/Number'
 import agreement from 'utils/calculateAgreement'
