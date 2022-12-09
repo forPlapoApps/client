@@ -1,13 +1,13 @@
 import { useEffect, useState, createContext } from 'react'
-import CopyLink from '../components/CopyLink'
-import FibonacciNumber from '../components/FibonacciNumber'
+import CopyLink from 'components/CopyLink'
+import FibonacciNumbers from 'components/FibonacciNumbers'
 import OpenButton from '../components/OpenButton'
 import SetName from '../components/SetName'
-import MyName from '../components/MyName'
+import ChangeNameButton from 'components/ChangeNameButton'
 import Result from '../components/Result'
 import { io } from 'socket.io-client'
 import { useRouter } from 'next/router'
-import Title from '../components/Title'
+import Title from 'components/Title'
 import { useBeforeunload } from 'react-beforeunload'
 
 const url = process.env.SERVER_URL
@@ -51,7 +51,7 @@ export default function RoomsUid() {
         {name ? (
           <div className='w-screen h-screen p-4 flex flex-col justify-between'>
             <div className='flex'>
-              <Title />
+              <Title uid={uid} />
               <CopyLink />
             </div>
             <div className='flex'>
@@ -61,8 +61,8 @@ export default function RoomsUid() {
               <OpenButton resultAverage={resultAverage} resultAgreement={resultAgreement} />
             </div>
             <div className='flex'>
-              <MyName />
-              <FibonacciNumber />
+              <ChangeNameButton />
+              <FibonacciNumbers uid={uid} isInProgress={isInProgress} />
             </div>
           </div>
         ) : (
