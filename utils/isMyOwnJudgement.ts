@@ -1,7 +1,7 @@
 export const isMyOwnJudgement = (seletedNumber: number, candidateNumber: number) => {
   if (seletedNumber === candidateNumber) {
-    return 'btn-lg my-auto'
+    return 'btn'
   } else {
-    return 'my-5'
+    return 'btn-primary'
   }
 }

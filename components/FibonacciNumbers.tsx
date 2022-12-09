@@ -21,7 +21,7 @@ const FibonacciNumbers = ({ uid, isInProgress }) => {
       {numbers.map((num, i) => (
         <label
           htmlFor={num.toString()}
-          className={`btn btn-primary ${isMyOwnJudgement(number, num)}`}
+          className={`btn btn-lg ${isMyOwnJudgement(number, num)}`}
           key={i}
         >
           {num}
