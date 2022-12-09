@@ -1,6 +1,7 @@
 import { useEffect, useState, createContext } from 'react'
 import CopyLink from 'components/CopyLink'
-import FibonacciNumber from '../components/FibonacciNumber'
+// import FibonacciNumber from '../components/FibonacciNumber'
+import FibonacciNumbers from 'components/FibonacciNumbers'
 import OpenButton from '../components/OpenButton'
 import SetName from '../components/SetName'
 import ChangeNameButton from 'components/ChangeNameButton'
@@ -62,7 +63,7 @@ export default function RoomsUid() {
             </div>
             <div className='flex'>
               <ChangeNameButton />
-              <FibonacciNumber />
+              <FibonacciNumbers uid={uid} isInProgress={isInProgress} />
             </div>
           </div>
         ) : (
