@@ -1,13 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopy, faCheck } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
+import React from 'react'
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 export default function CopyLink() {
   const [link, setLink] = useState('')
   const [icon, setIcon] = useState(faCopy)
 
-  const sleep = (waitTime) => new Promise((resolve) => setTimeout(resolve, waitTime))
+  const sleep = (waitTime: number) => new Promise((resolve) => setTimeout(resolve, waitTime))
 
   const copyLink = async () => {
     setIcon(faCheck)
