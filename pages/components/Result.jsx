@@ -55,7 +55,7 @@ export default function Result(props) {
       } ))
       setIsInProgress(true)
     })
-  })
+  }, [setIsInProgress, socket])
 
   return (
     <>
