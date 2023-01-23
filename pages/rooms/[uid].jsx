@@ -41,7 +41,7 @@ export default function RoomsUid() {
   useBeforeunload((e) => {
     if (uid && name) {
       const data = { roomUid: uid, userName: name }
-      socket.emit('logOutRoom', { data: data })
+      socket.emit('logOutRoom', data)
     }
   })
 

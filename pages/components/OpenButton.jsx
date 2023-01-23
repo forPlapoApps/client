@@ -6,12 +6,12 @@ export default function OpenButton(props) {
 
   const openAllScore = () => {
     setIsInProgress(false)
-    socket.emit('openScoreRequest', { data: { roomUid: uid } })
+    socket.emit('openScoreRequest', { roomUid: uid })
   }
 
   const resetAllScore = () => {
     setIsInProgress(true)
-    socket.emit('resetScoreRequest', { data: { roomUid: uid } })
+    socket.emit('resetScoreRequest', { roomUid: uid })
   }
 
   return (
