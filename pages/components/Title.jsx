@@ -8,7 +8,7 @@ export default function Title() {
 
   const RedirectToRoot = () => {
     const data = { roomUid: uid, userName: name }
-    socket.emit('logOutRoom', { data: data })
+    socket.emit('logOutRoom', data)
     router.push('/')
   }
 

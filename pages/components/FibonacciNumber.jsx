@@ -8,7 +8,7 @@ export default function FibonacciNumber() {
   const selectScore = (e) => {
     setNumber(e.target.value)
     const data = { roomUid: uid, userName: name, value: e.target.value }
-    socket.emit('sendScore', { data: data })
+    socket.emit('sendScore', data)
   }
 
   const isMyOwnJudgement = (seletedNumber) => {

@@ -9,7 +9,7 @@ export default function MyName() {
   const deleteName = () => {
     localStorage.removeItem('userName')
     const data = { roomUid: uid, userName: name }
-    socket.emit('logOutRoom', { data: data })
+    socket.emit('logOutRoom', data)
     setName('')
   }
 

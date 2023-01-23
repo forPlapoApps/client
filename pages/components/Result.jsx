@@ -13,14 +13,14 @@ export default function Result(props) {
   useEffect(() => {
     if (uid) {
       const data = { roomUid: uid, userName: name, value: 0 }
-      socket.emit('sendScore', { data: data })
+      socket.emit('sendScore', data)
     }
   }, [uid, name, socket])
 
   useEffect(() => {
     socket.on('receivedScore', (data) => {
       setList(data.sort((a, b) => {
-        return a.data.userName.localeCompare(b.data.userName, 'ja')
+        return a.userName.localeCompare(b.userName, 'ja')
       } ))
       return () => {
         socket.off('receivedScore')
@@ -31,11 +31,11 @@ export default function Result(props) {
   useEffect(() => {
     let total = 0
     list.forEach((e) => {
-      total = Number(total) + Number(e.data.value)
+      total = Number(total) + Number(e.value)
     })
     const average = Math.round(total / list.length * 10) / 10
     const valueArray = list.map((e) => {
-      return Number(e.data.value)
+      return Number(e.value)
     })
 
     props.setResultAverage(average)
@@ -51,7 +51,7 @@ export default function Result(props) {
   useEffect(() => {
     socket.on('resetAllScore', (data) => {
       setList(data.sort((a, b) => {
-        return a.data.userName.localeCompare(b.data.userName, 'ja')
+        return a.userName.localeCompare(b.userName, 'ja')
       } ))
       setIsInProgress(true)
     })
@@ -63,8 +63,8 @@ export default function Result(props) {
         <div className='flex gap-4 mx-auto'>
           {list.map((e, i) => (
             <div key={i} className='flex flex-col gap-2 '>
-              <ResultNumber score={e.data.value} />
-              <ResultName name={e.data.userName} />
+              <ResultNumber score={e.value} />
+              <ResultName name={e.userName} />
             </div>
           ))}
         </div>
