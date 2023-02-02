@@ -39,6 +39,10 @@ export default function Home() {
               Play start
             </p>
           </Link>
+
+          <Link href={`/rooms`}>
+            <p className='btn'>Room一覧へ（仮ボタン）</p>
+          </Link>
         </div>
       </section>
 
