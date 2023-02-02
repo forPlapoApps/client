@@ -3,7 +3,7 @@ import $api, { fetcher } from 'lib/swr'
 import Link from 'next/link';
 
 const RoomsPage = () => {
-  const { data: rooms, error, isValidating } = useSWR(`${$api}/rooms`, fetcher)
+  const { data: rooms, error } = useSWR<Room[]>(`${$api}/rooms`, fetcher)
 
   if (error) return <div>failed to load</div>;
   if (!rooms) return <div>loading...</div>;
