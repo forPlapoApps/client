@@ -6,6 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from "zod"
 import updateRoom from "src/rooms/mutations/updateRoom"
+import CopyLink from "src/core/components/CopyLink"
 
 const RoomSchema = z.object({
   name: z.string()
@@ -31,6 +32,7 @@ const ShowRoomPage = () => {
 
   return (
     <div>
+      <CopyLink />
       <p>{room.name}</p>
       <button className="btn" onClick={handleClick}>click</button>
       <form onSubmit={handleSubmit(onSubmit)}>
