@@ -2,14 +2,13 @@ import useSWR from 'swr'
 import $api, { fetcher } from 'lib/swr'
 import Link from 'next/link';
 import router from 'next/router';
+import createRoom from 'src/rooms/mutations/createRoom';
 
 const RoomsPage = () => {
   const { data: rooms, error } = useSWR<Room[]>(`${$api}/rooms`, fetcher)
 
   const createRoomButton = async () => {
-    const room: Room = await fetch(`${$api}/rooms`,{
-      method: "POST"
-    }).then((res) => res.json())
+    const room: Room = await createRoom()
     router.push(`/rooms/${room.id}`)
   }
 
