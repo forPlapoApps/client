@@ -15,4 +15,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
+MyApp.getInitialProps = async () => ({ pageProps: {}})
+
 export default MyApp
