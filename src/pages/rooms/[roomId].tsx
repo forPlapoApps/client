@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from "zod"
 import updateRoom from "src/rooms/mutations/updateRoom"
 import CopyLink from "src/core/components/CopyLink"
+import deleteRoom from "src/rooms/mutations/deleteRoom"
 
 const RoomSchema = z.object({
   name: z.string()
@@ -23,6 +24,10 @@ const ShowRoomPage = () => {
   const onSubmit: SubmitHandler<RoomSchemaType> = (params) => {
     updateRoom(roomId, params)
   }
+  const handleDisband = () => {
+    deleteRoom(roomId)
+    router.push('/rooms')
+  }
   const handleClick = () => {
     socket.emit("message", "hogehoge")
   }
@@ -36,9 +41,19 @@ const ShowRoomPage = () => {
       <p>{room.name}</p>
       <button className="btn" onClick={handleClick}>click</button>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="text" placeholder="Type here" className="input w-full max-w-xs" {...register('name', { required: true })} defaultValue={room.name} />
+        <input
+          type="text"
+          placeholder="Type here"
+          className="input w-full max-w-xs"
+          {...register('name', { required: true })}
+          defaultValue={room.name}
+        />
         <button type="submit" className="btn">submit</button>
       </form>
+      <button
+        className="btn btn-error"
+        onClick={handleDisband}
+      >解散</button>
     </div>
   )
 }
