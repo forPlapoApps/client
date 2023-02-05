@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Button } from 'flowbite-react'
 
 export default function Home() {
   const [link, setLink] = useState('')
@@ -41,7 +42,7 @@ export default function Home() {
           </Link>
 
           <Link href={`/rooms`}>
-            <p className='btn'>Room一覧へ（仮ボタン）</p>
+            <Button>Room一覧へ（仮ボタン）</Button>
           </Link>
         </div>
       </section>

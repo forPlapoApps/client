@@ -1,3 +1,4 @@
+import { Button } from "flowbite-react"
 import Link from "next/link"
 
 const Header = () => {
@@ -36,10 +37,12 @@ const Header = () => {
           <div className="flex items-center gap-4">
             <div className="gap-4 hidden md:flex">
               <Link href='/login'>
-                <a className="btn btn-primary">Login</a>
+                <Button>Login</Button>
               </Link>
               <Link href='/signup'>
-                <a className="btn">Register</a>
+                <Button color="light">
+                  Register
+                </Button>
               </Link>
             </div>
 
