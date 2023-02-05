@@ -14,7 +14,7 @@ const Layout = ({ children }: Props) => {
       </Head>
 
       <Header />
-      <div>
+      <div className="max-w-screen-xl mx-auto items-center gap-8 px-4 sm:px-6 lg:px-8 py-4">
         {children}
       </div>
     </>
