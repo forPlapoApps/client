@@ -1,5 +1,4 @@
 import { useContext } from 'react'
-import { RoomsUidContext } from '../../rooms/[uid]'
 
 export default function ResultNumber(props) {
   const { isInProgress } = useContext(RoomsUidContext)

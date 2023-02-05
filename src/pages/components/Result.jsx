@@ -1,9 +1,8 @@
 import { useContext, useEffect, useState } from 'react'
-import { RoomsUidContext } from '../rooms/[uid]'
 import Spinner from './Spinner'
 import ResultName from './Result/Name'
 import ResultNumber from './Result/Number'
-import agreement from '../../utils/calcutateAgreement'
+// import agreement from '../../utils/calcutateAgreement'
 
 export default function Result(props) {
   const [list, setList] = useState([])

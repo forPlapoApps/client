@@ -8,6 +8,7 @@ import { z } from "zod"
 import updateRoom from "src/rooms/mutations/updateRoom"
 import CopyLink from "src/core/components/CopyLink"
 import deleteRoom from "src/rooms/mutations/deleteRoom"
+import Layout from "src/core/components/Layout"
 
 const RoomSchema = z.object({
   name: z.string()
@@ -36,7 +37,7 @@ const ShowRoomPage = () => {
   if (!room) return <div>loading...</div>
 
   return (
-    <div>
+    <Layout>
       <CopyLink />
       <p>{room.name}</p>
       <button className="btn" onClick={handleClick}>click</button>
@@ -54,7 +55,7 @@ const ShowRoomPage = () => {
         className="btn btn-error"
         onClick={handleDisband}
       >解散</button>
-    </div>
+    </Layout>
   )
 }
 

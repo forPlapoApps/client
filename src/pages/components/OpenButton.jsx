@@ -1,5 +1,4 @@
 import { useContext } from 'react'
-import { RoomsUidContext } from '../rooms/[uid]'
 
 export default function OpenButton(props) {
   const { socket, isInProgress, setIsInProgress, uid } = useContext(RoomsUidContext)

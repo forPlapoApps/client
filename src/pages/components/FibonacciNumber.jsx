@@ -1,5 +1,4 @@
 import { useContext, useState, useEffect } from 'react'
-import { RoomsUidContext } from '../rooms/[uid]'
 
 export default function FibonacciNumber() {
   const [number, setNumber] = useState(0)

@@ -1,6 +1,5 @@
 import { useRouter } from "next/router"
 import { useContext } from "react"
-import { RoomsUidContext } from "../rooms/[uid]"
 
 export default function Title() {
   const router = useRouter()

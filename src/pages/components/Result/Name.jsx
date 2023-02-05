@@ -1,5 +1,4 @@
 import { useContext } from "react"
-import { RoomsUidContext } from "../../rooms/[uid]"
 
 export default function ResultName(props) {
   const { name } = useContext(RoomsUidContext) 

@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from 'react'
-import { RoomsUidContext } from '../rooms/[uid]'
 
 export default function MyName() {
   const { name, setName, socket, uid } = useContext(RoomsUidContext)
