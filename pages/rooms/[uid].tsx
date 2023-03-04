@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import Title from '../components/Title'
 import { useBeforeunload } from 'react-beforeunload'
 
-const url = process.env.SERVER_URL
+const url = process.env.SERVER_URL!
 const socket = io(url, {
   closeOnBeforeunload: false,
 })
@@ -35,7 +35,7 @@ export default function RoomsUid() {
   }
 
   useEffect(() => {
-    setName(localStorage.getItem('userName'))
+    setName(localStorage.getItem('userName')!)
   }, [])
 
   useBeforeunload((e) => {
