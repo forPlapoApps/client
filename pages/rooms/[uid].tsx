@@ -9,9 +9,9 @@ import { io } from 'socket.io-client'
 import { useRouter } from 'next/router'
 import Title from '../components/Title'
 import { useBeforeunload } from 'react-beforeunload'
+import $api from 'utils/$api'
 
-const url = process.env.SERVER_URL!
-const socket = io(url, {
+const socket = io($api, {
   closeOnBeforeunload: false,
 })
 
