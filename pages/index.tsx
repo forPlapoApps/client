@@ -1,23 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import randomstring from "randomstring"
 
 export default function Home() {
-  const [link, setLink] = useState('')
-
-  const makeRoomUid = () => {
-    let str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-    let randstr = ''
-    let n = 30
-    for (let i = 0; i < n; i++) {
-      randstr += str[~~(Math.random() * str.length)]
-    }
-    setLink(randstr)
-  }
-
-  useEffect(() => {
-    makeRoomUid()
-  }, [])
+  const [generatedString] = useState(randomstring.generate(30))
 
   return (
     <>
@@ -34,7 +21,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <Link href={`/rooms/${link}`}>
+          <Link href={`/rooms/${generatedString}`}>
             <p className='inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 cursor-pointer'>
               Play start
             </p>
@@ -60,7 +47,7 @@ export default function Home() {
                 </p>
                 <div className='relative flex flex-col sm:flex-row sm:space-x-4'>
                   <a
-                    href={`/rooms/${link}`}
+                    href={`/rooms/${generatedString}`}
                     className='flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-indigo-600 rounded-md sm:mb-0 hover:bg-indigo-700 sm:w-auto'
                   >
                     Try It Free
