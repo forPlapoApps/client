@@ -5,15 +5,11 @@ import OpenButton from '../components/OpenButton'
 import SetName from '../components/SetName'
 import MyName from '../components/MyName'
 import Result from '../components/Result'
-import { io } from 'socket.io-client'
 import { useRouter } from 'next/router'
 import Title from '../components/Title'
 import { useBeforeunload } from 'react-beforeunload'
-import $api from 'utils/$api'
+import socket from 'lib/socket'
 
-const socket = io($api, {
-  closeOnBeforeunload: false,
-})
 
 export const RoomsUidContext = createContext({})
 
