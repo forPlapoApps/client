@@ -68,7 +68,7 @@ export default function RoomsUid() {
             </div>
             <div className='flex'>
               <MyName name={name} setName={setName} />
-              <FibonacciNumber />
+              <FibonacciNumber name={name} isInProgress={isInProgress} />
             </div>
           </div>
         ) : (
