@@ -1,9 +1,11 @@
-import { useContext } from 'react'
-import { RoomsUidContext } from '../rooms/[uid]'
+import { FC } from 'react'
 
-export default function SetName() {
-  const { setName } = useContext(RoomsUidContext)
-  const keyPress = (e) => {
+type Props = {
+  setName: any
+}
+
+const SetNameComponent: FC<Props> = ({ setName }) => {
+  const keyPress = (e: any) => {
     if (e.key == 'Enter') {
       localStorage.setItem('userName', e.target.value)
       setName(e.target.value)
@@ -25,3 +27,5 @@ export default function SetName() {
     </>
   )
 }
+
+export default SetNameComponent

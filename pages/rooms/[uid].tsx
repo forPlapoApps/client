@@ -72,7 +72,7 @@ export default function RoomsUid() {
             </div>
           </div>
         ) : (
-          <SetName />
+          <SetName setName={setName} />
         )}
       </RoomsUidContext.Provider>
     </>
