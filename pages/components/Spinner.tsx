@@ -1,4 +1,4 @@
-export default function Spinner() {
+const Spinner = () => {
   return (
     <>
       <div className='w-full'>
@@ -11,3 +11,5 @@ export default function Spinner() {
     </>
   )
 }
+
+export default Spinner

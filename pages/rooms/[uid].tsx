@@ -5,15 +5,10 @@ import OpenButton from '../components/OpenButton'
 import SetName from '../components/SetName'
 import MyName from '../components/MyName'
 import Result from '../components/Result'
-import { io } from 'socket.io-client'
 import { useRouter } from 'next/router'
 import Title from '../components/Title'
 import { useBeforeunload } from 'react-beforeunload'
-
-const url = process.env.SERVER_URL
-const socket = io(url, {
-  closeOnBeforeunload: false,
-})
+import socket from 'lib/socket'
 
 export const RoomsUidContext = createContext({})
 
@@ -35,7 +30,7 @@ export default function RoomsUid() {
   }
 
   useEffect(() => {
-    setName(localStorage.getItem('userName'))
+    setName(localStorage.getItem('userName')!)
   }, [])
 
   useBeforeunload((e) => {
@@ -51,22 +46,33 @@ export default function RoomsUid() {
         {name ? (
           <div className='w-screen h-screen p-4 flex flex-col justify-between'>
             <div className='flex'>
-              <Title />
+              <Title name={name} />
               <CopyLink />
             </div>
             <div className='flex'>
-              <Result setResultAverage={setResultAverage} setResultAgreement={setResultAgreement} />
+              <Result
+                setResultAverage={setResultAverage}
+                setResultAgreement={setResultAgreement}
+                name={name}
+                isInProgress={isInProgress}
+                setIsInProgress={setIsInProgress}
+              />
             </div>
             <div className='flex'>
-              <OpenButton resultAverage={resultAverage} resultAgreement={resultAgreement} />
+              <OpenButton
+                resultAverage={resultAverage}
+                resultAgreement={resultAgreement}
+                isInProgress={isInProgress}
+                setIsInProgress={setIsInProgress}
+              />
             </div>
             <div className='flex'>
-              <MyName />
-              <FibonacciNumber />
+              <MyName name={name} setName={setName} />
+              <FibonacciNumber name={name} isInProgress={isInProgress} />
             </div>
           </div>
         ) : (
-          <SetName />
+          <SetName setName={setName} />
         )}
       </RoomsUidContext.Provider>
     </>

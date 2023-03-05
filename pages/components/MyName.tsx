@@ -1,10 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
-import { useContext } from 'react'
+import { FC, useContext } from 'react'
 import { RoomsUidContext } from '../rooms/[uid]'
+import socket from 'lib/socket'
+import { useRouter } from 'next/router'
 
-export default function MyName() {
-  const { name, setName, socket, uid } = useContext(RoomsUidContext)
+type Props = {
+  name: string
+  setName: any
+}
+
+const MyName: FC<Props> = ({ name, setName }) => {
+  const router = useRouter()
+  const { uid } = router.query
 
   const deleteName = () => {
     localStorage.removeItem('userName')
@@ -22,3 +30,5 @@ export default function MyName() {
     </>
   )
 }
+
+export default MyName
