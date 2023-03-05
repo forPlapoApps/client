@@ -47,7 +47,7 @@ export default function RoomsUid() {
         {name ? (
           <div className='w-screen h-screen p-4 flex flex-col justify-between'>
             <div className='flex'>
-              <Title />
+              <Title name={name} />
               <CopyLink />
             </div>
             <div className='flex'>
