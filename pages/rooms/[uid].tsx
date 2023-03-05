@@ -59,7 +59,12 @@ export default function RoomsUid() {
               />
             </div>
             <div className='flex'>
-              <OpenButton resultAverage={resultAverage} resultAgreement={resultAgreement} />
+              <OpenButton
+                resultAverage={resultAverage}
+                resultAgreement={resultAgreement}
+                isInProgress={isInProgress}
+                setIsInProgress={setIsInProgress}
+              />
             </div>
             <div className='flex'>
               <MyName />
