@@ -63,7 +63,7 @@ export default function Result(props) {
         <div className='flex gap-4 mx-auto'>
           {list.map((e, i) => (
             <div key={i} className='flex flex-col gap-2 '>
-              <ResultNumber score={e.value} />
+              <ResultNumber score={e.value} isInProgress={isInProgress} />
               <ResultName name={e.userName} />
             </div>
           ))}
