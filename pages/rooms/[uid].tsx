@@ -10,7 +10,6 @@ import Title from '../components/Title'
 import { useBeforeunload } from 'react-beforeunload'
 import socket from 'lib/socket'
 
-
 export const RoomsUidContext = createContext({})
 
 export default function RoomsUid() {
@@ -51,7 +50,13 @@ export default function RoomsUid() {
               <CopyLink />
             </div>
             <div className='flex'>
-              <Result setResultAverage={setResultAverage} setResultAgreement={setResultAgreement} />
+              <Result
+                setResultAverage={setResultAverage}
+                setResultAgreement={setResultAgreement}
+                name={name}
+                isInProgress={isInProgress}
+                setIsInProgress={setIsInProgress}
+              />
             </div>
             <div className='flex'>
               <OpenButton resultAverage={resultAverage} resultAgreement={resultAgreement} />
